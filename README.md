@@ -16,6 +16,14 @@
 
 > 这是**第一次系统整理并单独发布**的语料库。它同时是 DAWcoder 预览版模型的训练语料，但与具体模型解耦：任何音乐/音频方向的 LLM 训练、评测、研究都可以直接使用。
 
+## 生态（相关项目）
+
+| 项目 | 内容 |
+|---|---|
+| **open-music-production-corpus**（本仓库） | 3,713 万 tokens 文本 CPT 语料（23 源，含和声/对位/乐器法/总谱分析） |
+| [open-music-engineering-data](https://github.com/ShokouP/open-music-engineering-data) | 10,208 鼓 Pattern / 30,336 结构边界 / DAWproject 规范 / 参数样本 |
+| [daw-mcp-server](https://github.com/ShokouP/daw-mcp-server) | 11 个 MCP tools：DAW 自动化、渲染、WAV 指标、闭环验证（REAPER/FL/DAWproject） |
+
 ## 数据下载
 
 完整语料通过 GitHub Release 发布（仓库内仅保留 lite 版，避免超过 Git 限制）：
