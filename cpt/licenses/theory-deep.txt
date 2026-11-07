@@ -1,0 +1,6 @@
+﻿Theory-deep (public domain) — Gutenberg + Internet Archive
+- Project Gutenberg books: harmony / counterpoint / instrumentation / orchestration /
+  score reading / musical analysis textbooks; PG header/footer removed.
+- Internet Archive scanned books: only items with metadata possible-copyright-status =
+  NOT_IN_COPYRIGHT (or explicit public-domain license); OCR text cleaned.
+- Sources URLs are recorded per document (url field) in the corpus.

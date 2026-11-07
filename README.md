@@ -1,16 +1,16 @@
 # Open Music Production & Audio Engineering Corpus (OMPAC)
 
 [![GitHub stars](https://img.shields.io/github/stars/ShokouP/open-music-production-corpus?style=social)](https://github.com/ShokouP/open-music-production-corpus)
-[![Data v0.8](https://img.shields.io/badge/data-v0.9%20%C2%B7%2034.9M%20tokens-blue)](https://github.com/ShokouP/open-music-production-corpus/releases/tag/corpus-v0.9)
+[![Data v1.0](https://img.shields.io/badge/data-v1.0%20%C2%B7%2037.1M%20tokens-blue)](https://github.com/ShokouP/open-music-production-corpus/releases/tag/corpus-v1.0)
 [![License](https://img.shields.io/badge/license-CC%20BY--SA%204.0-lightgrey)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 > 如果这个语料库对你有用，欢迎点个 Star，让更多做音乐 AI 的人找到它。
 
 一个**开放、逐源许可审计、可复现构建**的音乐制作 / 音频工程文本语料库，面向小模型继续预训练（CPT）、指令微调与评测。
 
-- 当前版本：**v0.9** — 72,828 docs / 131,171,491 字符 / **~34,914,423 tokens**
+- 当前版本：**v1.0** — 73,586 docs / 140,026,215 字符 / **~37,127,816 tokens**
 - 语言：英文 70,968 docs / 中文 1,459 docs / 中英混合 401 docs（中文 token ≈12%）
-- 源：22 个（Stack Exchange 官方转储、Project Gutenberg 公版书与古典乐理/配器教材、Grove 音乐词典、Open Music Theory、中文维基百科、arXiv 摘要、11 个开放文档仓库、DAWproject 规范、自建参数语义手册）
+- 源：23 个（Stack Exchange 官方转储、theory-deep 和声/对位/乐器法/总谱分析公版教材、Grove 音乐词典、Open Music Theory、Project Gutenberg 音乐公版书、中文维基百科、arXiv 摘要、11 个开放文档仓库、DAWproject 规范、自建参数语义手册）
 - 许可：CC BY-SA 4.0 为主 + 公版 + MIT/ISC/CC0；**逐源署名与许可证据**在 `cpt/licenses/` 与 `docs/ATTRIBUTIONS.md`
 - 构建：纯 Python/CPU，全流程脚本在 `cpt/`，可从公开源复现
 
@@ -23,7 +23,7 @@
 **Release：** https://github.com/ShokouP/open-music-production-corpus/releases
 
 ```bash
-gh release download corpus-v0.9 -R ShokouP/open-music-production-corpus -D data
+gh release download corpus-v1.0 -R ShokouP/open-music-production-corpus -D data
 cd data && for f in *.gz; do gunzip -k "$f"; done
 ```
 
@@ -33,17 +33,17 @@ cd data && for f in *.gz; do gunzip -k "$f"; done
 | `cpt_train_text.jsonl` / `cpt_val_text.jsonl` | CPT 训练格式（仅 `{"text": ...}`，可直接喂 HF Trainer） |
 | `manifest.json` / `stats.md` / `ATTRIBUTIONS.md` | 统计、sha256、逐源署名 |
 | `licenses.tar.gz` | 逐源原始许可文本（证据） |
-| `MERGE-REPORT.md` / `ZHWIKI-REPORT.md` | 合并与中文语料构建报告 |
+| `MERGE-REPORT.md` / `ZHWIKI-REPORT.md` / `THEORY-REPORT.md` | 合并、中文、古典理论语料构建报告 |
 
 仓库内 `cpt/data/` 还有一份 **lite 语料**（~3M tokens），可直接浏览与冒烟测试。
 
-## 构成（v0.9）
+## 构成（v1.0）
 
 | 源 | 许可 | 内容 |
 |---|---|---|
 | stackexchange-sound / music / avp | CC BY-SA 4.0 | 混音/母带/录音/EQ/压缩/乐理问答（官方数据转储） |
 | gutenberg-music | 公版 | 乐理/声学/乐器/歌唱类公版书（精选） |
-| **gutenberg-theory** | 公版 | **古典乐理/和声/对位/配器/指挥/总谱阅读教材（624 docs）** |
+| **theory-deep** | 公版 | **和声学/对位法/乐器法/配器法/总谱分析教材（1,382 docs，含 Prout、Ouseley、Cherubini、Kitson、Berlioz、Widor、Gevaert、Coerne、Goetschius 等）** |
 | **wikisource-grove** | 公版 | **Grove《A Dictionary of Music and Musicians》配器/乐器法/和声/对位条目（255 docs）** |
 | **open-music-theory** | CC BY-SA 4.0 | **Open Music Theory 教材章节（106 docs）** |
 | zh-wikipedia-dump | CC BY-SA 4.0 | 中文维基音乐/音频条目（1,459 docs，含乐理/乐器/录音/音频技术） |
@@ -56,7 +56,7 @@ cd data && for f in *.gz; do gunzip -k "$f"; done
 ## 许可与使用边界
 
 - **公开/研究/非商用与 SA 兼容场景**：直接使用完整语料（按 CC BY-SA 4.0 分发，保留署名）。
-- **商用训练**：使用 `data-permissive` 子集（仅 CC0 / Public-Domain / MIT / ISC / BSD / Apache，~9.5M tokens），或在完整语料上按 `license_class=permissive` 过滤。
+- **商用训练**：使用 permissive 子集（仅 CC0 / Public-Domain / MIT / ISC / BSD / Apache，约 760 万 tokens），或在完整语料上按 `license_class=permissive` 过滤。
 - 受版权内容（REAPER/FL Studio 手册等）**不在**本语料中。
 - 逐源许可原文：`cpt/licenses/`；每篇语料保留 `source`/`license`/`url` 字段与 `ATTRIBUTIONS.md` 署名。
 
