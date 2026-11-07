@@ -1,0 +1,368 @@
+# DAWcoder 继续预训练（CPT）语料源注册表
+# 只允许 redistributable: true 的源进入公开语料（cpt/build.py）。
+# max_tokens 是构建预算权重（同时用于 full/lite 两种构建的比例分配）。
+version: 4
+corpus: dawcoder-cpt-v0.2
+sources:
+  - id: stackexchange-sound
+    title: Sound Design Stack Exchange 全量（官方数据转储）
+    license: CC-BY-SA-4.0
+    tier: T1
+    redistributable: true
+    fetch:
+      method: stackexchange_dump
+      url: "https://archive.org/download/stackexchange/sound.stackexchange.com.7z"
+      site: sound
+      max_tokens: 6000000
+    notes: "用户贡献内容 CC BY-SA 4.0；记录帖子 URL 与作者署名"
+
+  - id: stackexchange-music
+    title: Music Practice & Theory Stack Exchange 全量（官方数据转储）
+    license: CC-BY-SA-4.0
+    tier: T1
+    redistributable: true
+    fetch:
+      method: stackexchange_dump
+      url: "https://archive.org/download/stackexchange/music.stackexchange.com.7z"
+      site: music
+      max_tokens: 8000000
+    notes: "用户贡献内容 CC BY-SA 4.0；记录帖子 URL 与作者署名"
+
+  - id: stackexchange-avp
+    title: Audio/Video Production Stack Exchange 全量（官方数据转储）
+    license: CC-BY-SA-4.0
+    tier: T1
+    redistributable: true
+    fetch:
+      method: stackexchange_dump
+      url: "https://archive.org/download/stackexchange/avp.stackexchange.com.7z"
+      site: avp
+      max_tokens: 4000000
+    notes: "用户贡献内容 CC BY-SA 4.0；记录帖子 URL 与作者署名"
+
+  - id: wikibooks-audio
+    title: 维基教科书 音频工程/音乐制作（CC BY-SA 4.0）
+    license: CC-BY-SA-4.0
+    tier: T1
+    redistributable: true
+    optional: true
+    fetch:
+      method: mediawiki_search
+      site: en.wikibooks.org
+      queries: [audio engineering, music production, mixing, acoustics, music theory, recording, sound recording, microphone]
+      search_limit: 30
+      max_docs: 120
+      min_chars: 1500
+      max_chars: 3000000
+      max_tokens: 0
+    notes: "教科书条目（声学/录音/乐理），补充现代教学文本"
+
+  - id: gutenberg-music
+    title: Project Gutenberg 音乐/声学/音频类公版书
+    license: Public-Domain
+    tier: T0
+    redistributable: true
+    fetch:
+      method: gutenberg
+      max_books: 500
+      max_tokens: 12000000
+    notes: "公版书全文（音乐理论/声学/乐器/歌唱等）；去除 PG 页眉页脚"
+
+  - id: arxiv-audio
+    title: arXiv 音频/混音方向论文摘要（元数据 CC0）
+    license: CC0-1.0
+    tier: T0
+    redistributable: true
+    fetch:
+      method: arxiv
+      queries:
+        - '"automatic mixing"'
+        - '"music mixing"'
+        - '"audio effects"'
+        - '"source separation"'
+        - '"equalization"'
+        - '"dynamic range compression"'
+        - '"music production"'
+        - '"loudness normalization"'
+        - '"spatial audio"'
+        - '"reverberation"'
+        - '"audio plugin"'
+        - '"digital audio workstation"'
+        - '"mixing console"'
+        - '"music information retrieval"'
+      max_results_per_query: 200
+      max_tokens: 500000
+    notes: "arXiv API 元数据（标题/摘要）按 CC0 1.0 提供；摘要版权归作者，按 arXiv 元数据许可使用"
+
+  - id: dawproject-spec
+    title: DAWproject 开放工程格式规范与示例（MIT）
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: raw_url
+      max_tokens: 60000
+      files:
+        - {url: "https://raw.githubusercontent.com/bitwig/dawproject/main/README.md", title: "DAWproject README"}
+        - {url: "https://raw.githubusercontent.com/bitwig/dawproject/main/Project.xsd", title: "DAWproject Project XSD"}
+        - {url: "https://raw.githubusercontent.com/bitwig/dawproject/main/MetaData.xsd", title: "DAWproject MetaData XSD"}
+        - {url: "https://raw.githubusercontent.com/bitwig/dawproject/main/Reference.html", title: "DAWproject XML Reference"}
+    notes: "MIT：保留版权与许可声明"
+
+  - id: dawcoder-ir-handbook
+    title: DAWcoder 参数语义手册（自建，CC0）
+    license: CC0-1.0
+    tier: T0
+    redistributable: true
+    fetch:
+      method: synthetic
+      from: synthetic/data
+      max_docs: 900
+      max_tokens: 300000
+    notes: "由仓库内 SFT 合成样本转写的领域说明文本，完全自有"
+
+  - id: zh-wikipedia-audio
+    title: 中文维基百科 音频工程条目
+    license: CC-BY-SA-4.0
+    tier: T1
+    redistributable: true
+    optional: true
+    fetch:
+      method: wikipedia_titles
+      site: zh.wikipedia.org
+      max_tokens: 300000
+      titles:
+        - 音频工程
+        - 音乐制作
+        - 录音
+        - 录音室
+        - 母带
+        - 动态范围
+        - 动态范围压缩
+        - 失真
+        - 噪声
+        - 分贝
+        - 频率
+        - 滤波器
+        - 混响
+        - 混响时间
+        - 声学
+        - 心理声学
+        - 音色
+        - 泛音
+        - 音高
+        - 节拍
+        - 和声
+        - 对位
+        - 编曲
+        - 配器
+        - 采样
+        - 采样率
+        - 量化
+        - 脉冲编码调制
+        - 调音台
+        - 监听
+        - 扬声器
+        - 耳机
+        - 麦克风
+        - 前置放大器
+        - 放大器
+        - 均衡器
+        - 声像
+        - 立体声
+        - 环绕声
+        - 音频接口
+        - 数字音频
+        - 插件
+        - 虚拟乐器
+        - 工作站
+        - 效果器
+        - 延迟
+        - 声压级
+        - 响度
+        - 音频信号
+        - 频谱
+        - 傅里叶变换
+    notes: "中文术语覆盖；逐条抓取全文，限速时跳过"
+
+  - id: zh-wikisource-music
+    title: 中文维基文库 古代音乐文献（公版）
+    license: Public-Domain
+    tier: T0
+    redistributable: true
+    optional: true
+    fetch:
+      method: wikisource_search
+      site: zh.wikisource.org
+      queries: [律呂, 樂律, 樂記, 琴, 聲律, 曲律, 樂府, 雅樂, 燕樂, 歌]
+      search_limit: 60
+      max_docs: 250
+      min_chars: 4000
+      max_chars: 8000000
+      max_tokens: 3000000
+    notes: "公版古籍（乐律/琴论/曲论等）；搜索后全文抓取"
+
+  - id: wikipedia-audio
+    title: Wikipedia 音频工程 / 音乐制作条目
+    license: CC-BY-SA-4.0
+    tier: T1
+    redistributable: true
+    optional: true
+    fetch:
+      method: wikipedia
+      max_pages: 300
+      full_text_pages: 0
+      max_tokens: 0
+      categories:
+        - Audio engineering
+        - Audio effects
+        - Equalization (audio)
+        - Dynamic range compression
+        - Reverb
+        - Mixing (music)
+        - Music production
+        - Audio signal processing
+        - Loudness
+        - Digital audio workstation
+    notes: "可选源：Wikipedia 批量抓取限速严格（429），失败时跳过；后续用 dumps 补充"
+
+  - id: reaper-user-guide
+    title: REAPER User Guide（Cockos）
+    license: Non-Commercial
+    tier: T2
+    redistributable: false
+    fetch:
+      method: manual_request
+      url: "https://www.reaper.fm/userguide.php"
+    notes: "受版权保护，只能本地获取用于私有语料，不得进入公开语料"
+
+  - id: flstudio-manual
+    title: FL Studio 官方手册（Image-Line）
+    license: Non-Commercial
+    tier: T2
+    redistributable: false
+    fetch:
+      method: manual_request
+      url: "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/"
+    notes: "受版权保护，只能本地获取用于私有语料，不得进入公开语料"
+
+  - id: sfz-format-docs
+    title: "SFZ sampler parameter reference"
+    license: CC0-1.0
+    tier: T0
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/sfz/sfz.github.io"
+      max_tokens: 1000000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: sonic-pi-tutorial
+    title: "Sonic Pi English and Chinese music production tutorials"
+    license: CC-BY-SA-4.0
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/sonic-pi-net/sonic-pi"
+      max_tokens: 2000000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Tutorials are CC BY-SA 4.0, independently of the application code license."
+
+  - id: librosa-docs
+    title: "librosa audio and music analysis documentation"
+    license: ISC
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/librosa/librosa"
+      max_tokens: 2000000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: mido-docs
+    title: "Mido MIDI messages, timing and files"
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/mido/mido"
+      max_tokens: 500000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: pretty-midi-docs
+    title: "pretty_midi symbolic music and MIDI documentation"
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/craffel/pretty-midi"
+      max_tokens: 500000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: pyloudnorm-docs
+    title: "pyloudnorm loudness measurement and normalization"
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/csteinmetz1/pyloudnorm"
+      max_tokens: 200000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: sounddevice-docs
+    title: "Sounddevice audio streams, latency and devices"
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/spatialaudio/python-sounddevice"
+      max_tokens: 500000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: audioflux-docs
+    title: "audioFlux spectral, pitch and rhythm analysis"
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/libAudioFlux/audioFlux"
+      max_tokens: 2000000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: pyroomacoustics-docs
+    title: "Room acoustics, reverberation and microphone arrays"
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/LCAV/pyroomacoustics"
+      max_tokens: 1500000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: clap-docs
+    title: "CLAP audio plugin protocol documentation"
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/free-audio/clap"
+      max_tokens: 300000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."
+
+  - id: windows-midi-docs
+    title: "Windows MIDI Services protocols and timing"
+    license: MIT
+    tier: T1
+    redistributable: true
+    fetch:
+      method: github_docs
+      url: "https://github.com/microsoft/MIDI"
+      max_tokens: 2000000
+    notes: "Allowlisted documentation only; commit pins, file hashes and license evidence in cpt/open_docs.lock.json and cpt/licenses/. Preserve original notices."

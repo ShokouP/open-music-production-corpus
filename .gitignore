@@ -1,0 +1,10 @@
+﻿__pycache__/
+*.pyc
+.venv/
+raw/
+data-full/
+*.7z
+*.bz2
+*.gz
+_tmp/
+.DS_Store
