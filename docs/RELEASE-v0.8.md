@@ -86,3 +86,10 @@ ds = load_dataset("json", data_files="cpt_train_text.jsonl", split="train")
 - 中文维基已全量扫完（160 万页），继续扩中文需要教科书/授权教材
 - 不含真实工程参数与音频（这是另一类数据）
 - wikitext 清洗为启发式，少量残缺句；问答体建议与教材类 1:1 混用
+
+---
+
+如果这个语料库对你有用，欢迎给仓库点个 **Star**：
+https://github.com/ShokouP/open-music-production-corpus
+
+Star 多了，后续版本（更多中文、真实工程数据、SFT 任务数据）会更容易被社区看到。

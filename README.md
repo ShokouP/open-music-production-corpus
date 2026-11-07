@@ -1,5 +1,11 @@
 # Open Music Production & Audio Engineering Corpus (OMPAC)
 
+[![GitHub stars](https://img.shields.io/github/stars/ShokouP/open-music-production-corpus?style=social)](https://github.com/ShokouP/open-music-production-corpus)
+[![Data v0.8](https://img.shields.io/badge/data-v0.8%20%C2%B7%2032.5M%20tokens-blue)](https://github.com/ShokouP/open-music-production-corpus/releases/tag/corpus-v0.8)
+[![License](https://img.shields.io/badge/license-CC%20BY--SA%204.0-lightgrey)](https://creativecommons.org/licenses/by-sa/4.0/)
+
+> 如果这个语料库对你有用，欢迎点个 Star，让更多做音乐 AI 的人找到它。
+
 一个**开放、逐源许可审计、可复现构建**的音乐制作 / 音频工程文本语料库，面向小模型继续预训练（CPT）、指令微调与评测。
 
 - 当前版本：**v0.8** — 71,844 docs / 121,595,600 字符 / **~32,520,758 tokens**
