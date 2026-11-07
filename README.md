@@ -8,9 +8,9 @@
 
 一个**开放、逐源许可审计、可复现构建**的音乐制作 / 音频工程文本语料库，面向小模型继续预训练（CPT）、指令微调与评测。
 
-- 当前版本：**v0.8** — 71,844 docs / 121,595,600 字符 / **~32,520,758 tokens**
-- 语言：英文 69,984 docs / 中文 1,459 docs / 中英混合 401 docs（中文 token ≈12%）
-- 源：19 个（Stack Exchange 官方转储、Project Gutenberg 公版书、中文维基百科、arXiv 摘要、11 个开放文档仓库、DAWproject 规范、自建参数语义手册）
+- 当前版本：**v0.9** — 72,828 docs / 131,171,491 字符 / **~34,914,423 tokens**
+- 语言：英文 70,968 docs / 中文 1,459 docs / 中英混合 401 docs（中文 token ≈12%）
+- 源：22 个（Stack Exchange 官方转储、Project Gutenberg 公版书与古典乐理/配器教材、Grove 音乐词典、Open Music Theory、中文维基百科、arXiv 摘要、11 个开放文档仓库、DAWproject 规范、自建参数语义手册）
 - 许可：CC BY-SA 4.0 为主 + 公版 + MIT/ISC/CC0；**逐源署名与许可证据**在 `cpt/licenses/` 与 `docs/ATTRIBUTIONS.md`
 - 构建：纯 Python/CPU，全流程脚本在 `cpt/`，可从公开源复现
 
@@ -23,7 +23,7 @@
 **Release：** https://github.com/ShokouP/open-music-production-corpus/releases
 
 ```bash
-gh release download corpus-v0.8 -R ShokouP/open-music-production-corpus -D data
+gh release download corpus-v0.9 -R ShokouP/open-music-production-corpus -D data
 cd data && for f in *.gz; do gunzip -k "$f"; done
 ```
 
@@ -37,12 +37,15 @@ cd data && for f in *.gz; do gunzip -k "$f"; done
 
 仓库内 `cpt/data/` 还有一份 **lite 语料**（~3M tokens），可直接浏览与冒烟测试。
 
-## 构成（v0.8）
+## 构成（v0.9）
 
 | 源 | 许可 | 内容 |
 |---|---|---|
 | stackexchange-sound / music / avp | CC BY-SA 4.0 | 混音/母带/录音/EQ/压缩/乐理问答（官方数据转储） |
 | gutenberg-music | 公版 | 乐理/声学/乐器/歌唱类公版书（精选） |
+| **gutenberg-theory** | 公版 | **古典乐理/和声/对位/配器/指挥/总谱阅读教材（624 docs）** |
+| **wikisource-grove** | 公版 | **Grove《A Dictionary of Music and Musicians》配器/乐器法/和声/对位条目（255 docs）** |
+| **open-music-theory** | CC BY-SA 4.0 | **Open Music Theory 教材章节（106 docs）** |
 | zh-wikipedia-dump | CC BY-SA 4.0 | 中文维基音乐/音频条目（1,459 docs，含乐理/乐器/录音/音频技术） |
 | zh-wikipedia-audio | CC BY-SA 4.0 | 中文维基音频术语条目 |
 | arxiv-audio | CC0（元数据） | 混音/分离/响度/空间音频等论文摘要 |
