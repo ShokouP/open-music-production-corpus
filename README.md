@@ -1,7 +1,7 @@
 # Open Music Production & Audio Engineering Corpus (OMPAC)
 
 [![GitHub stars](https://img.shields.io/github/stars/ShokouP/open-music-production-corpus?style=social)](https://github.com/ShokouP/open-music-production-corpus)
-[![Data v0.8](https://img.shields.io/badge/data-v0.8%20%C2%B7%2032.5M%20tokens-blue)](https://github.com/ShokouP/open-music-production-corpus/releases/tag/corpus-v0.8)
+[![Data v0.8](https://img.shields.io/badge/data-v0.9%20%C2%B7%2034.9M%20tokens-blue)](https://github.com/ShokouP/open-music-production-corpus/releases/tag/corpus-v0.9)
 [![License](https://img.shields.io/badge/license-CC%20BY--SA%204.0-lightgrey)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 > 如果这个语料库对你有用，欢迎点个 Star，让更多做音乐 AI 的人找到它。
