@@ -1,0 +1,4 @@
+﻿Project Gutenberg — Public Domain
+Source: https://www.gutenberg.org/
+Usage: 全文本公版书（音乐理论/和声/对位/配器/指挥），去 PG 页眉页脚后按块收录。
+License: Public Domain (US)
