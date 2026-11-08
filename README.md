@@ -117,5 +117,5 @@ python cpt/make_cpt_text.py <out>
 ## DAWcoder 模型
 
 基于本语料训练的音乐制作参数模型（4B，Qwen3.5-4B 基座，GGUF Q4_K_M）：
-- Hugging Face：https://huggingface.co/Shokou1/dawcoder
-- GitHub：https://github.com/ShokouP/dawcoder
+- Hugging Face：https://huggingface.co/Shokou1/qwen3.5-4B-dawcoder
+- GitHub：https://github.com/ShokouP/qwen3.5-4B-dawcoder
