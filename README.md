@@ -113,3 +113,9 @@ python cpt/make_cpt_text.py <out>
 - 自建语料/手册：CC0-1.0
 - 第三方语料：按来源许可（CC BY-SA 4.0 / 公版 / MIT / ISC），整体按 CC BY-SA 4.0 分发
 - 引用：如果使用本语料，请引用本仓库与 `docs/ATTRIBUTIONS.md` 中的逐源出处。
+
+## DAWcoder 模型
+
+基于本语料训练的音乐制作参数模型（4B，Qwen3.5-4B 基座，GGUF Q4_K_M）：
+- Hugging Face：https://huggingface.co/Shokou1/dawcoder
+- GitHub：https://github.com/ShokouP/dawcoder
